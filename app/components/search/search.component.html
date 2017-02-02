@@ -1,0 +1,46 @@
+<h1>Need User Info?</h1>
+<h5>Search git user's information, by providing the git username!!!</h5>
+<form>
+  <div class="form-group">
+    <input type="text" [(ngModel)]="searchStr" name="searchStr" (blur)="searchArtist()" placeholder="Search Github User..." class="form-control">
+  </div>
+</form>
+<div *ngIf="userDetails">
+  <div class="row">
+    <div class="col-md-2">
+      <img src="{{userDetails.avatar_url}}" alt="avatar_url" height="130" width="130">
+    </div>
+    <div class="col-md-10">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge">{{userDetails.followers}}</span> Followers
+        </li>
+        <li class="list-group-item">
+          <span class="badge">{{userDetails.public_repos}}</span> Public Repos
+        </li>
+        <li class="list-group-item">
+          <span class="badge">{{userDetails.following}}</span> Following
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <h5>Public Repository List</h5>
+    <div *ngFor="let repo of repos" class="panel panel-default">
+      <div class="panel-heading">{{repo.name}}</div>
+      <div class="panel-body">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <span class="badge">{{repo.size}}</span> Size
+          </li>
+          <li class="list-group-item">
+            <span class="badge">{{repo.watchers_count}}</span> Watchers
+          </li>
+          <li class="list-group-item">
+            <span class="badge">{{repo.language}}</span> Language
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
